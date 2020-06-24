@@ -10,6 +10,7 @@ import UIKit
 import TrustKit
 
 class ViewController: UIViewController,URLSessionDelegate {
+    
     lazy var session: URLSession = {
         URLSession(configuration: URLSessionConfiguration.ephemeral,
                                          delegate: self,
