@@ -96,14 +96,14 @@ class ViewController: UIViewController,URLSessionDelegate {
     func testWithAlmofirePublicPin(){
         
         sharedManager.request("https://statefarmstg.sureify.com")
-            .response{
+            .response{[weak self]
                 res in
                 
                 if res.response != nil{
-                    self.displayAlert(withTitle: "Test Result",
+                    self?.displayAlert(withTitle: "Test Result",
                                        message: "Pinning validation succeeded")
                 }else{
-                    self.displayAlert(withTitle: "Test Result",
+                    self?.displayAlert(withTitle: "Test Result",
                     message: "Pinning validation Failed")
                 }
                 
