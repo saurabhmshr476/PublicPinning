@@ -7,4 +7,5 @@ target 'PublicPinning' do
 
   # Pods for PublicPinning
 pod 'TrustKit'
+pod 'Alamofire', '~> 4.8.2'
 end

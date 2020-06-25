@@ -8,21 +8,44 @@
 
 import UIKit
 import TrustKit
+import Alamofire
+
+
+ let sharedManager: SessionManager = {
+    
+    let serverTrustPolicies:[String:ServerTrustPolicy] = [
+        "statefarmstg.sureify.com": .pinPublicKeys(publicKeys: ServerTrustPolicy.publicKeys(), validateCertificateChain: true, validateHost: true)
+    ]
+    
+    
+    let manager = Alamofire.SessionManager(
+     serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
+    )
+            return manager
+}()
+
+
+
+
 
 class ViewController: UIViewController,URLSessionDelegate {
+    
+    //var sessionManager = SessionManager()
     
     lazy var session: URLSession = {
         URLSession(configuration: URLSessionConfiguration.ephemeral,
                                          delegate: self,
                                          delegateQueue: OperationQueue.main)
     }()
-    let baseURLYahoo = "https://www.yahoo.com/"
+    
+    //let baseURLYahoo = "https://statefarmstg.sureify.com"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        testPublicKeyPinning(url: URL(string: baseURLYahoo)!)
-        // Do any additional setup after loading the view.
+        testWithAlmofirePublicPin()
+        
+        //testPublicKeyPinning(url: URL(string: baseURLYahoo)!)
     }
 
    
@@ -43,8 +66,7 @@ class ViewController: UIViewController,URLSessionDelegate {
     
     // MARK: Test Control
     
-    func testPublicKeyPinning(url: URL) {
-        // Show loading view
+    func testPublicKeyPinningWithTrustKit(url: URL) {
         
         // Load a URL with a good pinning configuration
         let task = session.dataTask(with: url) { [weak self] (data, response, error) in
@@ -69,5 +91,46 @@ class ViewController: UIViewController,URLSessionDelegate {
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
+    
+    
+    func testWithAlmofirePublicPin(){
+        
+        sharedManager.request("https://statefarmstg.sureify.com")
+            .response{
+                res in
+                
+                if res.response != nil{
+                    self.displayAlert(withTitle: "Test Result",
+                                       message: "Pinning validation succeeded")
+                }else{
+                    self.displayAlert(withTitle: "Test Result",
+                    message: "Pinning validation Failed")
+                }
+                
+                
+        }
+    }
+    
+    /*func testWithAlmofire(){
+        
+        let serverTrustPolicies:[String:ServerTrustPolicy] = [
+            "statefarmstg.sureify.com": .pinPublicKeys(publicKeys: ServerTrustPolicy.publicKeys(), validateCertificateChain: true, validateHost: true)
+        ]
+        
+        
+        sessionManager = SessionManager(
+         serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
+        )
+    sessionManager.request("https://statefarmstg.sureify.com").response{ res in
+            if res.response != nil{
+                self.displayAlert(withTitle: "Test Result",
+                                   message: "Pinning validation succeeded")
+            }else{
+                self.displayAlert(withTitle: "Test Result",
+                message: "Pinning validation Failed")
+            }
+            
+        }
+    }*/
 }
 

@@ -15,28 +15,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        
         // Override point for customization after application launch.
-        TrustKit.setLoggerBlock { (message) in
+        /*TrustKit.setLoggerBlock { (message) in
             print("TrustKit log: \(message)")
         }
         
         let trustKitConfig: [String: Any] = [
             kTSKSwizzleNetworkDelegates: false,
             kTSKPinnedDomains: [
-                "yahoo.com": [
+                "statefarmstg.sureify.com": [
                     kTSKEnforcePinning: true,
                     kTSKIncludeSubdomains: true,
                     
                     // Invalid pins to demonstrate a pinning failure
                     kTSKPublicKeyHashes: [
-                         "PwgQone4bsXFxKqaJ+clKEl212h9g56PORrELz6Zjmo=",
+                       "/Pc2ZANwqb2qoeaR6P9O90aqnI2pAriShBIvkxNNXnk=", //"PwgQone4bsXFxKqaJ+clKEl212h9g56PORrELz6Zjmo=",
                          "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB="
                     ],
                     kTSKReportUris:["https://overmind.datatheorem.com/trustkit/report"],
                 ]
             ]]
         
-        TrustKit.initSharedInstance(withConfiguration: trustKitConfig)
+        TrustKit.initSharedInstance(withConfiguration: trustKitConfig)*/
         return true
     }
 

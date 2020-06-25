@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,7 @@
 		B7430F2E24A3CFF40037DAFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7430F2C24A3CFF40037DAFC /* Main.storyboard */; };
 		B7430F3024A3CFFA0037DAFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7430F2F24A3CFFA0037DAFC /* Assets.xcassets */; };
 		B7430F3324A3CFFA0037DAFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7430F3124A3CFFA0037DAFC /* LaunchScreen.storyboard */; };
+		B7DCC75724A4E5710055B5A2 /* sureify.cer in Resources */ = {isa = PBXBuildFile; fileRef = B7DCC75624A4E5710055B5A2 /* sureify.cer */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		B7430F2F24A3CFFA0037DAFC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7430F3224A3CFFA0037DAFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B7430F3424A3CFFA0037DAFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B7DCC75624A4E5710055B5A2 /* sureify.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = sureify.cer; sourceTree = "<group>"; };
 		E497DB1F272EB5347C084D5C /* Pods-PublicPinning.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PublicPinning.debug.xcconfig"; path = "Target Support Files/Pods-PublicPinning/Pods-PublicPinning.debug.xcconfig"; sourceTree = "<group>"; };
 		F25B737A1510311FCBE760ED /* Pods-PublicPinning.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PublicPinning.release.xcconfig"; path = "Target Support Files/Pods-PublicPinning/Pods-PublicPinning.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,6 +73,7 @@
 		B7430F2524A3CFF40037DAFC /* PublicPinning */ = {
 			isa = PBXGroup;
 			children = (
+				B7DCC75624A4E5710055B5A2 /* sureify.cer */,
 				B7430F2624A3CFF40037DAFC /* AppDelegate.swift */,
 				B7430F2824A3CFF40037DAFC /* SceneDelegate.swift */,
 				B7430F2A24A3CFF40037DAFC /* ViewController.swift */,
@@ -88,7 +91,6 @@
 				E497DB1F272EB5347C084D5C /* Pods-PublicPinning.debug.xcconfig */,
 				F25B737A1510311FCBE760ED /* Pods-PublicPinning.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -154,6 +156,7 @@
 			files = (
 				B7430F3324A3CFFA0037DAFC /* LaunchScreen.storyboard in Resources */,
 				B7430F3024A3CFFA0037DAFC /* Assets.xcassets in Resources */,
+				B7DCC75724A4E5710055B5A2 /* sureify.cer in Resources */,
 				B7430F2E24A3CFF40037DAFC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
