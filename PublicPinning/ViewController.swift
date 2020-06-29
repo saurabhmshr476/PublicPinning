@@ -10,19 +10,7 @@ import UIKit
 import TrustKit
 import Alamofire
 
-
- let sharedManager: SessionManager = {
-    
-    let serverTrustPolicies:[String:ServerTrustPolicy] = [
-        "statefarmstg.sureify.com": .pinPublicKeys(publicKeys: ServerTrustPolicy.publicKeys(), validateCertificateChain: true, validateHost: true)
-    ]
-    
-    
-    let manager = Alamofire.SessionManager(
-     serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
-    )
-            return manager
-}()
+ 
 
 
 
@@ -30,7 +18,44 @@ import Alamofire
 
 class ViewController: UIViewController,URLSessionDelegate {
     
-    //var sessionManager = SessionManager()
+
+    //MARK: - Session Manager without  delegate
+
+
+    let sessionManager: SessionManager = {
+        
+        
+        let serverTrustPolicies:[String:ServerTrustPolicy] = [
+            "statefarmstg.sureify.com": .pinPublicKeys(publicKeys: ServerTrustPolicy.publicKeys(), validateCertificateChain: true, validateHost: true)
+        ]
+        
+        // manager without delegate
+      
+        let manager = Alamofire.SessionManager(
+         serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
+        )
+        
+        
+
+        return manager
+    }()
+
+    //MARK: - Session Manager with custom delegate
+
+     let sessionManagerWithCustomDelegate: SessionManager = {
+        
+        let serverTrustPolicies:[String:ServerTrustPolicy] = [
+            "statefarmstg.sureify.com": .pinPublicKeys(publicKeys: ServerTrustPolicy.publicKeys(), validateCertificateChain: true, validateHost: true)
+        ]
+     
+        
+        let manager = Alamofire.SessionManager(
+            delegate: PinningSessionDelegate(), // Feeding our own session delegate
+            serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
+        )
+        return manager
+    }()
+    
     
     lazy var session: URLSession = {
         URLSession(configuration: URLSessionConfiguration.ephemeral,
@@ -38,12 +63,15 @@ class ViewController: UIViewController,URLSessionDelegate {
                                          delegateQueue: OperationQueue.main)
     }()
     
-    //let baseURLYahoo = "https://statefarmstg.sureify.com"
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        testWithAlmofirePublicPin()
+        //testWithAlmofirePublicPin()
+        
+        testWithAlmofirePublicPinUsingCustomDelegate()
+        
         
         //testPublicKeyPinning(url: URL(string: baseURLYahoo)!)
     }
@@ -51,7 +79,7 @@ class ViewController: UIViewController,URLSessionDelegate {
    
     
     
-    // MARK: TrustKit Pinning Reference
+    //MARK: - TrustKit Pinning Reference
     
     func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
         
@@ -64,7 +92,6 @@ class ViewController: UIViewController,URLSessionDelegate {
     }
 
     
-    // MARK: Test Control
     
     func testPublicKeyPinningWithTrustKit(url: URL) {
         
@@ -85,6 +112,7 @@ class ViewController: UIViewController,URLSessionDelegate {
         task.resume()
     }
     
+ //MARK: - Display public pinning Success/Failure
     
     func displayAlert(withTitle title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -92,10 +120,22 @@ class ViewController: UIViewController,URLSessionDelegate {
         present(alertController, animated: true, completion: nil)
     }
     
+   //MARK: - Alamofire Public pinning without delegate
     
     func testWithAlmofirePublicPin(){
+
+       /*
+         let serverTrustPolicies:[String:ServerTrustPolicy] = [
+            "statefarmstg.sureify.com": .pinPublicKeys(publicKeys: ServerTrustPolicy.publicKeys(), validateCertificateChain: true, validateHost: true)
+        ]
         
-        sharedManager.request("https://statefarmstg.sureify.com")
+        sessionManager = SessionManager(
+            delegate: PinningSessionDelegate(), // Feeding our own session delegate
+            serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
+        )
+        */
+        
+        sessionManager.request("https://statefarmstg.sureify.com")
             .response{[weak self]
                 res in
                 
@@ -110,6 +150,29 @@ class ViewController: UIViewController,URLSessionDelegate {
                 
         }
     }
+    
+    //MARK: - Alamofire Public pinning using delegate
+    
+    func testWithAlmofirePublicPinUsingCustomDelegate(){
+        
+        sessionManager.request("https://statefarmstg.sureify.com")
+            .response{[weak self]
+                res in
+                
+                if res.response != nil{
+                    self?.displayAlert(withTitle: "Test Result",
+                                       message: "Pinning validation succeeded")
+                }else{
+                    self?.displayAlert(withTitle: "Test Result",
+                    message: "Pinning validation Failed")
+                }
+                
+                
+        }
+    }
+    
+    
+    //MARK: - Alamofire Public pinning configuration within the function
     
     /*func testWithAlmofire(){
         

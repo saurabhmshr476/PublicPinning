@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		45E1066974A6A777FF38E673 /* Pods_PublicPinning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D8DC909C6406A657E6569EF /* Pods_PublicPinning.framework */; };
+		B725FC6324A9EA030014AA53 /* PinningSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B725FC6224A9EA030014AA53 /* PinningSessionDelegate.swift */; };
 		B7430F2724A3CFF40037DAFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7430F2624A3CFF40037DAFC /* AppDelegate.swift */; };
 		B7430F2924A3CFF40037DAFC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7430F2824A3CFF40037DAFC /* SceneDelegate.swift */; };
 		B7430F2B24A3CFF40037DAFC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7430F2A24A3CFF40037DAFC /* ViewController.swift */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		7D8DC909C6406A657E6569EF /* Pods_PublicPinning.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PublicPinning.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B725FC6224A9EA030014AA53 /* PinningSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinningSessionDelegate.swift; sourceTree = "<group>"; };
 		B7430F2324A3CFF40037DAFC /* PublicPinning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PublicPinning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7430F2624A3CFF40037DAFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B7430F2824A3CFF40037DAFC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				B7430F2624A3CFF40037DAFC /* AppDelegate.swift */,
 				B7430F2824A3CFF40037DAFC /* SceneDelegate.swift */,
 				B7430F2A24A3CFF40037DAFC /* ViewController.swift */,
+				B725FC6224A9EA030014AA53 /* PinningSessionDelegate.swift */,
 				B7430F2C24A3CFF40037DAFC /* Main.storyboard */,
 				B7430F2F24A3CFFA0037DAFC /* Assets.xcassets */,
 				B7430F3124A3CFFA0037DAFC /* LaunchScreen.storyboard */,
@@ -211,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7430F2B24A3CFF40037DAFC /* ViewController.swift in Sources */,
+				B725FC6324A9EA030014AA53 /* PinningSessionDelegate.swift in Sources */,
 				B7430F2724A3CFF40037DAFC /* AppDelegate.swift in Sources */,
 				B7430F2924A3CFF40037DAFC /* SceneDelegate.swift in Sources */,
 			);
