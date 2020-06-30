@@ -137,6 +137,7 @@ class ViewController: UIViewController,URLSessionDelegate {
         
         
         APIManager.sharedManager.request("https://statefarmstg.sureify.com")
+            
             .response{[weak self]
                 res in
                 
