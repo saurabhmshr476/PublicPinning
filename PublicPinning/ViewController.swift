@@ -70,7 +70,7 @@ class ViewController: UIViewController,URLSessionDelegate {
         
         testWithAlmofirePublicPin()
         
-        //testWithAlmofirePublicPinUsingCustomDelegate()
+        testWithAlmofirePublicPinUsingCustomDelegate()
         
         
         //testPublicKeyPinning(url: URL(string: baseURLYahoo)!)
@@ -157,7 +157,7 @@ class ViewController: UIViewController,URLSessionDelegate {
     
     func testWithAlmofirePublicPinUsingCustomDelegate(){
         
-        sessionManager.request("https://statefarmstg.sureify.com")
+        APIManager.sharedManager.request("https://statefarmstg.sureify.com")
             .response{[weak self]
                 res in
                 
