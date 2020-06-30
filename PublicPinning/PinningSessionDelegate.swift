@@ -23,14 +23,14 @@ class PinningSessionDelegate: SessionDelegate {
             }
             
             // Compare the server certificate with our own stored
-            if let serverCertificate = SecTrustGetCertificateAtIndex(trust, 0) {
+            /*if let serverCertificate = SecTrustGetCertificateAtIndex(trust, 0) {
                 let serverCertificateData = SecCertificateCopyData(serverCertificate) as Data
                 
                 if PinningSessionDelegate.pinnedCertificates().contains(serverCertificateData) {
                     completion(.useCredential, URLCredential(trust: trust))
                     return
                 }
-            }
+            }*/
             
             // Or, compare the public keys
             if let serverCertificate = SecTrustGetCertificateAtIndex(trust, 0), let serverCertificateKey = PinningSessionDelegate.publicKey(for: serverCertificate) {

@@ -68,9 +68,9 @@ class ViewController: UIViewController,URLSessionDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //testWithAlmofirePublicPin()
+        testWithAlmofirePublicPin()
         
-        testWithAlmofirePublicPinUsingCustomDelegate()
+        //testWithAlmofirePublicPinUsingCustomDelegate()
         
         
         //testPublicKeyPinning(url: URL(string: baseURLYahoo)!)
@@ -135,7 +135,8 @@ class ViewController: UIViewController,URLSessionDelegate {
         )
         */
         
-        sessionManager.request("https://statefarmstg.sureify.com")
+        
+        APIManager.sharedManager.request("https://statefarmstg.sureify.com")
             .response{[weak self]
                 res in
                 
