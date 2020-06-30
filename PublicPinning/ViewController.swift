@@ -20,7 +20,7 @@ class ViewController: UIViewController,URLSessionDelegate {
     
 
     //MARK: - Session Manager without  delegate
-
+    // It is for pinning test 
 
     let sessionManager: SessionManager = {
         
